@@ -1,0 +1,15 @@
+[user]
+	name = Jared Szechy
+	email = jared.szechy@gmail.com
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+
+[github]
+	user = szechyjs
