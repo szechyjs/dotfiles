@@ -11,7 +11,4 @@ then
   source ~/.localrc
 fi
 
-for config_file in $DOTFILES/**/completion.sh
-do
-  . $config_file
-done
+source $DOTFILES/bash/init_completion.sh
