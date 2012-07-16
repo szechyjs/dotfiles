@@ -1,0 +1,17 @@
+export DOTFILES=$HOME/.dotfiles
+
+for config_file in $DOTFILES/**/*.bash
+do
+  [ -f "$config_file" ] || continue
+  . $config_file
+done
+
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
+for config_file in $DOTFILES/**/completion.sh
+do
+  . $config_file
+done
