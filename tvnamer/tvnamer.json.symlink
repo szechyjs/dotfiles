@@ -48,10 +48,10 @@
     "language": "en",
     "lowercase_filename": false,
     "move_files_confirmation": true,
-    "move_files_destination": ".",
+    "move_files_destination": "/vault/videos/TV Shows/%(seriesname)s/Season %(seasonnumber)d/",
     "move_files_destination_date": ".",
     "move_files_destination_is_filepath": false,
-    "move_files_enable": false,
+    "move_files_enable": true,
     "move_files_fullpath_replacements": [],
     "move_files_lowercase_destination": false,
     "move_files_only": false,
@@ -63,12 +63,12 @@
     "overwrite_destination_on_rename": false,
     "recursive": false,
     "replace_invalid_characters_with": "_",
-    "search_all_languages": true,
+    "search_all_languages": false,
     "select_first": false,
     "series_id": null,
     "skip_file_on_error": true,
     "titlecase_filename": false,
     "valid_extensions": [],
     "verbose": false,
-    "windows_safe_filenames": false
+    "windows_safe_filenames": true
 }
