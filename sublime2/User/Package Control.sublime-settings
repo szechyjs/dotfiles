@@ -1,0 +1,18 @@
+{
+	"auto_upgrade_last_run": 1343417192,
+	"installed_packages":
+	[
+		"Alignment",
+		"Arduino",
+		"CMake",
+		"Display Functions (Java)",
+		"Function Name Display",
+		"Git",
+		"google-search",
+		"INI",
+		"Package Control",
+		"pastebin-sublime-plugin",
+		"SublimeHg",
+		"WordHighlight"
+	]
+}
