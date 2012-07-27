@@ -1,8 +1,8 @@
 if [ -d "$HOME/android/android-sdk-linux" ] ; then
-    PATH="$PATH:$HOME/android/android-sdk-linux/tools"
+    export PATH="$PATH:$HOME/android/android-sdk-linux/tools"
 fi
 
-if [ -d "$HOME/apps" ] ; then
-    PATH="$PATH:$HOME/apps"
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$PATH:$HOME/bin"
 fi
 
