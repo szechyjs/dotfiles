@@ -1,0 +1,61 @@
+set noswapfile
+
+" ----------------------------------------------------------------------------
+"  Text Formatting
+" ----------------------------------------------------------------------------
+set modeline
+set autoindent
+set smartindent
+set wrap
+set linebreak
+set tabstop=4
+set shiftwidth=4
+set nosmarttab
+set expandtab
+set virtualedit=block
+"set textwidth=80
+set encoding=utf8
+set fileencoding=utf8
+syntax on " syntax hilight on
+syntax sync fromstart
+set listchars=tab:»·,trail:·,precedes:<,extends:>
+set list
+
+
+" ----------------------------------------------------------------------------
+"  UI
+" ----------------------------------------------------------------------------
+"let g:molokai_original = 1
+"colorscheme molokai
+
+set ruler
+set number
+set smartcase
+set cursorline
+
+if has("gui_running")
+   " set default size: 90x35
+   set columns=90
+   set lines=35
+   " No menus and no toolbar
+   set guioptions-=m
+   set guioptions-=T
+endif
+
+
+" ----------------------------------------------------------------------------
+" Visual Cues
+" ----------------------------------------------------------------------------
+set showmatch " Show matching braces.
+set incsearch " incremental searching on
+set hlsearch  " highlight all matches
+set ignorecase
+set visualbell
+
+
+set clipboard+=unnamed  " Yanks go on clipboard instead.
+set history=50 " keep track of last commands
+
+set selectmode=key
+set wildmenu " menu on statusbar for command autocomplete
+
