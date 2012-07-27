@@ -3,6 +3,6 @@ if [ -d "$HOME/android/android-sdk-linux" ] ; then
 fi
 
 if [ -d "$HOME/apps" ] ; then
-    PATH="$PATH:$HOME/apps
+    PATH="$PATH:$HOME/apps"
 fi
 
