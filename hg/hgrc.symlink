@@ -1,0 +1,16 @@
+[ui]
+username = Jared Szechy <jared.szechy@brilligent.com>
+verbose = True
+merge = meld
+
+[alias]
+llog = log --limit 5
+
+[merge-tools]
+meld.args = $local $other
+
+[extensions]
+color =
+progress =
+record =
+
