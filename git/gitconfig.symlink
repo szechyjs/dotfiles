@@ -11,5 +11,19 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 
+[alias]
+    merge-noff = merge --no-ff
+    ci = commit
+    unstage = reset HEAD
+
 [github]
 	user = szechyjs
+
+[merge]
+    tool = meld
+
+[mergetool "meld"]
+    cmd = "meld $BASE $LOCAL $REMOTE"
+
+[mergetool "kdiff3"]
+    cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
