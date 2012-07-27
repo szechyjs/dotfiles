@@ -3,6 +3,7 @@
 	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_size": 9,
+	"rulers": [ 80 ],
 	"ignored_packages":
 	[
 		"Vintage"
