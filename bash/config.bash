@@ -42,3 +42,5 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+source $DOTFILES/bash/ps1constants.sh
+
