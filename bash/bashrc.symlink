@@ -12,3 +12,4 @@ then
 fi
 
 source $DOTFILES/bash/init_completion.sh
+source $DOTFILES/bash/set_prompt.sh
