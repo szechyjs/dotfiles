@@ -18,7 +18,7 @@ set encoding=utf8
 set fileencoding=utf8
 syntax on " syntax hilight on
 syntax sync fromstart
-set listchars=tab:»·,trail:·,precedes:<,extends:>
+set listchars=tab:>-,trail:.,precedes:<,extends:>
 set list
 
 
