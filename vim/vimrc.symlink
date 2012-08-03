@@ -20,6 +20,8 @@ syntax on " syntax hilight on
 syntax sync fromstart
 set listchars=tab:>-,trail:.,precedes:<,extends:>
 set list
+au BufRead,BufNewFile *.ino set syntax=cpp
+au BufRead,BufNewFile *.pde set syntax=cpp
 
 
 " ----------------------------------------------------------------------------
