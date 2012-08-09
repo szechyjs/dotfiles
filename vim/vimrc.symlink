@@ -36,6 +36,10 @@ set number
 set smartcase
 set cursorline
 
+if &columns < 90
+   set columns=90
+endif
+
 if has("gui_running")
    " set default size: 90x35
    set columns=90
