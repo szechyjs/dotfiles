@@ -2,8 +2,8 @@ git_prompt=yes
 
 if [ -n "$git_prompt" ]; then
     if [ "$color_prompt" = yes ]; then
-        RedColor=$Red
-        GrnColor=$Green
+        RedColor=$MonoOrange
+        GrnColor=$MonoBlue
         Off=$Color_Off
     fi
     GITPS='$(git branch &>/dev/null;\

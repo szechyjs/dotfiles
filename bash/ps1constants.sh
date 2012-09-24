@@ -71,6 +71,20 @@ On_IPurple="\[\033[10;95m\]"  # Purple
 On_ICyan="\[\033[0;106m\]"    # Cyan
 On_IWhite="\[\033[0;107m\]"   # White
 
+# 256 Colors
+MonoPink="\[\033[0;38;05;161m\]"    # Pink
+MonoGreen="\[\033[0;38;05;118m\]"   # Green
+MonoOrange="\[\033[0;38;05;166m\]"  # Orange
+MonoBlue="\[\033[0;38;05;81m\]"     # Blue
+MonoWhite="\[\033[0;38;05;252m\]"   # White
+MonoString="\[\033[0;38;05;144m\]"  # Off White
+
+# Bold 256 Colors
+MonoBPink="\[\033[1;38;05;161m\]"   # Pink
+MonoBGreen="\[\033[1;38;05;118m\]"  # Green
+MonoBOrange="\[\033[1;38;05;166m\]" # Orange
+MonoBBlue="\[\033[1;38;05;81m\]"    # Blue
+
 # Various variables you might want for your PS1 prompt instead
 Time12h="\T"
 Time12a="\@"
