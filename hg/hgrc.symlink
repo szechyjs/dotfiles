@@ -13,4 +13,11 @@ meld.args = $local $other
 color =
 progress =
 record =
+purge =
 
+[kiln_scheme]
+kiln=https://brilligent.kilnhg.com/Repo
+
+[auth]
+kiln.prefix=brilligent.kilnhg.com
+kiln.username=Jared Szechy
