@@ -14,6 +14,9 @@ color =
 progress =
 record =
 purge =
+kilnauth = ~/.dotfiles/hg/kilnauth.py
+kilnpath = ~/.dotfiles/hg/kilnpath.py
+kiln = ~/.dotfiles/hg/kiln.py
 
 [kiln_scheme]
 kiln=https://brilligent.kilnhg.com/Repo
