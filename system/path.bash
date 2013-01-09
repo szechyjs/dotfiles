@@ -6,4 +6,8 @@ if [ -d "$HOME/bin" ] ; then
     export PATH="$PATH:$HOME/bin"
 fi
 
+if [ -d "/usr/local/heroku/bin" ] ; then
+    export PATH="$PATH:/usr/local/heroku/bin"
+fi
+
 export PATH=$DOTFILES/bin:$PATH
