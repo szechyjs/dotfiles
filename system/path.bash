@@ -3,7 +3,7 @@ if [ -d "$HOME/android/android-sdk-linux" ] ; then
 fi
 
 if [ -d "$HOME/bin" ] ; then
-    export PATH="$PATH:$HOME/bin"
+    export PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "/usr/local/heroku/bin" ] ; then
