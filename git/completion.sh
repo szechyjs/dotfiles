@@ -8,7 +8,7 @@ if [ -n "$git_prompt" ]; then
     fi
     GITPS='$(git branch &>/dev/null;\
     if [ $? -eq 0 ]; then \
-        echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+        echo "$(echo `git status` | grep "nothing" > /dev/null 2>&1; \
         if [ "$?" -eq "0" ]; then \
             echo "'$GrnColor'"$(__git_ps1 " (%s)"); \
         else \
