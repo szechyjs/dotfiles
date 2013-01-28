@@ -1,6 +1,7 @@
 [user]
 	name = Jared Szechy
 	email = jared.szechy@gmail.com
+	signingkey = 4CE34642
 
 [color]
 	diff = auto
@@ -27,3 +28,5 @@
 
 [mergetool "kdiff3"]
     cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
+[review "review.cyanogenmod.org"]
+	username = szechyjs
