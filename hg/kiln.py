@@ -1,4 +1,4 @@
-# Copyright (C) 2011 Fog Creek Software.  All rights reserved.
+# Copyright (C) 2011, 2012 Fog Creek Software.  All rights reserved.
 #
 # To enable the "kiln" extension put these lines in your ~/.hgrc:
 #  [extensions]
@@ -10,7 +10,7 @@
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
+# the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
@@ -51,8 +51,8 @@ import traceback
 
 from cookielib import MozillaCookieJar
 from hashlib import md5
-from mercurial import commands, cmdutil, demandimport, extensions, hg, \
-        httprepo, localrepo, match, util
+from mercurial import (commands, cmdutil, demandimport, extensions, hg,
+        localrepo, match, util)
 from mercurial import ui as hgui
 from mercurial import url as hgurl
 from mercurial.error import RepoError
@@ -153,13 +153,16 @@ def urljoin(*components):
     return url
 
 def _baseurl(ui, path):
-    remote = hg.repository(ui, path)
     try:
-        # Mercurial >= 1.9
-        url = util.removeauth(remote.url())
-    except AttributeError:
-        # Mercurial <= 1.8
-        url = hgurl.removeauth(remote.url())
+        url = str(util.url(util.removeauth(path)))
+    except util.Abort:
+        remote = hg.repository(ui, path)
+        try:
+            # Mercurial >= 1.9
+            url = util.removeauth(remote.url())
+        except AttributeError:
+            # Mercurial <= 1.8
+            url = hgurl.removeauth(remote.url())
     if url.lower().find('/kiln/') > 0 or url.lower().find('kilnhg.com/') > 0:
         return url
     else:
@@ -894,7 +897,13 @@ def uisetup(ui):
     push_cmd[1].extend([('', 'review', None, 'associate changesets with Kiln review')])
 
 def reposetup(ui, repo):
-    if issubclass(repo.__class__, httprepo.httprepository):
+    try:
+        from mercurial.httprepo import httprepository
+        httprepo = httprepository
+    except ImportError:
+        from mercurial.httppeer import httppeer
+        httprepo = httppeer
+    if issubclass(repo.__class__, httprepo):
         _upgradecheck(ui, repo)
     repo.ui.setconfig('hooks', 'outgoing.kilnreview', 'python:kiln.record_base')
 
