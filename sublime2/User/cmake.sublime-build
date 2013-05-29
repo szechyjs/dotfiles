@@ -1,0 +1,6 @@
+{
+    "cmd": ["make"],
+    "working_dir": "${project_path}/build",
+    "file_regex": "^(..[^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "selector": "CMakeFiles.txt"
+}
