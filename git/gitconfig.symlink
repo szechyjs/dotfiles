@@ -15,6 +15,11 @@
     merge-noff = merge --no-ff
     ci = commit
     unstage = reset HEAD
+    pdiff = diff --patience
+
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [github]
 	user = szechyjs
