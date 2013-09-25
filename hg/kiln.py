@@ -1,4 +1,4 @@
-# Copyright (C) 2011, 2012 Fog Creek Software.  All rights reserved.
+# Copyright (C) 2011-2013 Fog Creek Software.  All rights reserved.
 #
 # To enable the "kiln" extension put these lines in your ~/.hgrc:
 #  [extensions]
@@ -40,6 +40,7 @@ This extension also lets you create or add changesets to a code review when
 pushing to Kiln. See :hg:`help push` and
 http://kiln.stackexchange.com/questions/4679/ for more information.
 '''
+
 import itertools
 import os
 import re
@@ -52,7 +53,7 @@ import traceback
 from cookielib import MozillaCookieJar
 from hashlib import md5
 from mercurial import (commands, cmdutil, demandimport, extensions, hg,
-        localrepo, match, util)
+                       localrepo, match, util)
 from mercurial import ui as hgui
 from mercurial import url as hgurl
 from mercurial.error import RepoError
@@ -73,16 +74,19 @@ except ImportError:
 
 try:
     import webbrowser
+
     def browse(url):
         webbrowser.open(escape_reserved(url))
 except ImportError:
     if os.name == 'nt':
         import win32api
+
         def browse(url):
             win32api.ShellExecute(0, 'open', escape_reserved(url), None, None, 0)
 demandimport.enable()
 
 _did_version_check = False
+
 
 class APIError(Exception):
     def __init__(self, obj):
@@ -94,6 +98,7 @@ class APIError(Exception):
 
     def __str__(self):
         return '\n'.join('%s: %s' % (k, v) for k, v in self.errors.items())
+
 
 class Review(dict):
     def __init__(self, json, ui=None, token=None, baseurl=None):
@@ -119,28 +124,31 @@ class Review(dict):
                 'token': self.token,
                 'ixBug': self.key,
                 'revs': revs,
-                }
+            }
             call_api(self.ui, self.baseurl, 'Api/1.0/Repo/%d/CaseAssociation/Create' % ixRepo, params, post=True)
         else:
             params = {
                 'token': self.token,
                 'revs': revs,
                 'ixRepo': ixRepo,
-                }
+            }
             call_api(self.ui, self.baseurl, 'Api/2.0/Review/%s/Association/Create' % self.key, params, post=True)
         return urljoin(self.baseurl, 'Review', self.key)
 
     @classmethod
     def get_reviews(klass, ui, token, baseurl, ixRepo):
-        review_lists = call_api(ui, baseurl, 'Api/2.0/Reviews', dict(token=token))
+        review_lists = call_api(ui, baseurl, 'Api/2.0/Reviews', dict(token=token, fReviewed="false", fAwaitingReview="false", nDaysActive=14))
         reviews = {}
         for key, review_list in review_lists.iteritems():
-            if not key.startswith('reviews'): continue
+            if not key.startswith('reviews'):
+                continue
             for review in review_list:
                 review = Review(review, ui, token, baseurl)
-                if not review.belongs_to(ixRepo): continue
+                if not review.belongs_to(ixRepo):
+                    continue
                 reviews[review.key.lower()] = review
         return reviews
+
 
 def urljoin(*components):
     url = components[0]
@@ -151,6 +159,7 @@ def urljoin(*components):
             next = next[1:]
         url += next
     return url
+
 
 def _baseurl(ui, path):
     try:
@@ -168,12 +177,13 @@ def _baseurl(ui, path):
     else:
         return None
 
+
 def escape_reserved(path):
     reserved = re.compile(
-               r'^(((com[1-9]|lpt[1-9]|con|prn|aux)(\..*)?)|web\.config' +
-               r'|clock\$|app_data|app_code|app_browsers' +
-               r'|app_globalresources|app_localresources|app_themes' +
-               r'|app_webreferences|bin|.*\.(cs|vb)html?)$', re.IGNORECASE)
+        r'^(((com[1-9]|lpt[1-9]|con|prn|aux)(\..*)?)|web\.config' +
+        r'|clock\$|app_data|app_code|app_browsers' +
+        r'|app_globalresources|app_localresources|app_themes' +
+        r'|app_webreferences|bin|.*\.(cs|vb)html?|.*\.(svc|xamlx|xoml|rules))$', re.IGNORECASE)
     p = path.split('?')
     path = p[0]
     query = '?' + p[1] if len(p) > 1 else ''
@@ -182,8 +192,10 @@ def escape_reserved(path):
                     else part
                     for part in path.split('/')) + query
 
+
 def normalize_name(s):
     return s.lower().replace(' ', '-')
+
 
 def call_api(ui, baseurl, urlsuffix, params, post=False):
     '''returns the json object for the url and the data dictionary
@@ -206,13 +218,17 @@ def call_api(ui, baseurl, urlsuffix, params, post=False):
         raise util.Abort(_('kiln: an error occurred while trying to reach %s') % url)
 
     if isinstance(obj, dict) and 'errors' in obj:
-        if 'token' in params and obj['errors'][0]['codeError'] == 'InvalidToken':
+        error_code = obj['errors'][0]['codeError']
+        if 'token' in params and error_code == 'InvalidToken':
             token = login(ui, baseurl)
             add_kilnapi_token(ui, baseurl, token)
             params['token'] = token
             return call_api(ui, baseurl, urlsuffix, params, post)
+        elif error_code == 'BadAuthentication':
+            raise util.Abort(_('authorization failed'))
         raise APIError(obj)
     return obj
+
 
 def login(ui, url):
     ui.write(_('realm: %s\n') % url)
@@ -225,6 +241,7 @@ def login(ui, url):
         return token
     raise util.Abort(_('authorization failed'))
 
+
 def get_domain(url):
     temp = url[url.find('://') + len('://'):]
     domain = temp[:temp.find('/')]
@@ -236,6 +253,7 @@ def get_domain(url):
 
     return domain
 
+
 def _get_path(path):
     if os.name == 'nt':
         ret = os.path.expanduser('~\\_' + path)
@@ -246,12 +264,14 @@ def _get_path(path):
         ret = re.sub(r'([A-Za-z]):', r'\1:\\', ret)
     return ret
 
+
 def _upgradecheck(ui, repo):
     global _did_version_check
     if _did_version_check or not ui.configbool('kiln', 'autoupdate', True):
         return
     _did_version_check = True
     _upgrade(ui, repo)
+
 
 def _upgrade(ui, repo):
     ext_dir = os.path.dirname(os.path.abspath(__file__))
@@ -282,12 +302,14 @@ def _upgrade(ui, repo):
         ui.debug(_('kiln: error updating extensions: %s\n') % e)
         ui.debug(_('kiln: traceback: %s\n') % traceback.format_exc())
 
+
 def is_dest_a_path(ui, dest):
     paths = ui.configitems('paths')
     for pathname, path in paths:
         if pathname == dest:
             return True
     return False
+
 
 def is_dest_a_scheme(ui, dest):
     destscheme = dest[:dest.find('://')]
@@ -297,11 +319,13 @@ def is_dest_a_scheme(ui, dest):
                 return True
     return False
 
+
 def create_match_list(matchlist):
     ret = ''
     for m in matchlist:
         ret += '    ' + m + '\n'
     return ret
+
 
 def get_username(url):
     url = re.sub(r'https?://', '', url)
@@ -315,6 +339,7 @@ def get_username(url):
         return username
     # Didn't find anything...
     return ''
+
 
 def get_dest(ui):
     from mercurial.dispatch import _parse
@@ -331,6 +356,7 @@ def get_dest(ui):
     except:
         dest = 'default'
     return ui.expandpath(dest)
+
 
 def check_kilnapi_token(ui, url):
     tokenpath = _get_path('hgkiln')
@@ -355,6 +381,7 @@ def check_kilnapi_token(ui, url):
     fp.close()
     return ret
 
+
 def add_kilnapi_token(ui, url, fbToken):
     if not fbToken:
         return
@@ -369,11 +396,13 @@ def add_kilnapi_token(ui, url, fbToken):
     fp.write(domain + ' ' + userhash + ' ' + fbToken + '\n')
     fp.close()
 
+
 def delete_kilnapi_tokens():
     # deletes the hgkiln file
     tokenpath = _get_path('hgkiln')
     if os.path.exists(tokenpath) and not os.path.isdir(tokenpath):
         os.remove(tokenpath)
+
 
 def check_kilnauth_token(ui, url):
     cookiepath = _get_path('hgcookies')
@@ -396,14 +425,17 @@ def check_kilnauth_token(ui, url):
             if cookie.name == 'fbToken':
                 return cookie.value
 
+
 def remember_path(ui, repo, path, value):
     '''appends the path to the working copy's hgrc and backs up the original'''
 
     paths = dict(ui.configitems('paths'))
     # This should never happen.
-    if path in paths: return
+    if path in paths:
+        return
     # ConfigParser only cares about these three characters.
-    if re.search(r'[:=\s]', path): return
+    if re.search(r'[:=\s]', path):
+        return
 
     try:
         audit_path = scmutil.pathauditor(repo.root)
@@ -428,6 +460,7 @@ def remember_path(ui, repo, path, value):
     except IOError:
         return
 
+
 def unremember_path(ui, repo):
     '''restores the working copy's hgrc'''
 
@@ -446,6 +479,7 @@ def unremember_path(ui, repo):
     else:
         os.remove(hgrc)
 
+
 def guess_kilnpath(orig, ui, repo, dest=None, **opts):
     if not dest:
         return orig(ui, repo, **opts)
@@ -463,26 +497,26 @@ def guess_kilnpath(orig, ui, repo, dest=None, **opts):
             ntarget = [normalize_name(t) for t in target[1:4]]
             aliases = [normalize_name(s) for s in target[4]]
 
-            if ndest.count('/') == 0 and \
-                (ntarget[0] == ndest or \
-                ntarget[1] == ndest or \
-                ntarget[2] == ndest or \
-                ndest in aliases):
+            if (ndest.count('/') == 0 and
+                (ntarget[0] == ndest or
+                 ntarget[1] == ndest or
+                 ntarget[2] == ndest or
+                 ndest in aliases)):
                 matches.append(url)
-            elif ndest.count('/') == 1 and \
-                '/'.join(ntarget[0:2]) == ndest or \
-                '/'.join(ntarget[1:3]) == ndest:
+            elif (ndest.count('/') == 1 and
+                    '/'.join(ntarget[0:2]) == ndest or
+                    '/'.join(ntarget[1:3]) == ndest):
                 matches.append(url)
-            elif ndest.count('/') == 2 and \
-                '/'.join(ntarget[0:3]) == ndest:
+            elif (ndest.count('/') == 2 and
+                    '/'.join(ntarget[0:3]) == ndest):
                 matches.append(url)
 
-            if (ntarget[0].startswith(ndest) or \
-                ntarget[1].startswith(ndest) or \
-                ntarget[2].startswith(ndest) or \
-                '/'.join(ntarget[0:2]).startswith(ndest) or \
-                '/'.join(ntarget[1:3]).startswith(ndest) or \
-                '/'.join(ntarget[0:3]).startswith(ndest)):
+            if (ntarget[0].startswith(ndest) or
+                    ntarget[1].startswith(ndest) or
+                    ntarget[2].startswith(ndest) or
+                    '/'.join(ntarget[0:2]).startswith(ndest) or
+                    '/'.join(ntarget[1:3]).startswith(ndest) or
+                    '/'.join(ntarget[0:3]).startswith(ndest)):
                 prefixmatches.append(url)
 
         if len(matches) == 0:
@@ -503,6 +537,7 @@ def guess_kilnpath(orig, ui, repo, dest=None, **opts):
         finally:
             unremember_path(ui, repo)
 
+
 def get_tails(repo):
     tails = []
     for rev in xrange(repo['tip'].rev() + 1):
@@ -513,7 +548,14 @@ def get_tails(repo):
         raise util.Abort(_('Path guessing is only enabled for non-empty repositories.'))
     return tails
 
+
 def get_targets(repo):
+    def get_kiln_repo_url_prefix(default_prefix):
+        '''Checks repo paths and returns server url for ssh:. For http(s) falls back to default_prefix.'''
+        default_path = repo.ui.config('paths', 'default')
+        if default_path and default_path.startswith('ssh:'):
+            return default_path.rsplit('/', 3)[0]
+        return default_prefix
     targets = []
     kilnschemes = repo.ui.configitems('kiln_scheme')
     for scheme in kilnschemes:
@@ -526,12 +568,13 @@ def get_targets(repo):
         # We have an token at this point
         params = dict(revTails=tails, token=token)
         related_repos = call_api(repo.ui, baseurl, 'Api/1.0/Repo/Related', params)
-        targets.extend([[url,
+        targets.extend([[get_kiln_repo_url_prefix(url),
                          related_repo['sProjectSlug'],
                          related_repo['sGroupSlug'],
                          related_repo['sSlug'],
-                         related_repo.get('rgAliases', [])] for related_repo in related_repos])
+                         [a['sSlug'] for a in related_repo.get('rgAliases', [])]] for related_repo in related_repos])
     return targets
+
 
 def display_targets(repo):
     targets = get_targets(repo)
@@ -542,6 +585,7 @@ def display_targets(repo):
         else:
             alias_text = ''
         repo.ui.write('    %s/%s/%s/%s%s\n' % (target[0], target[1], target[2], target[3], alias_text))
+
 
 def get_token(ui, url):
     '''Checks for an existing API token. If none, returns a new valid token.'''
@@ -554,6 +598,7 @@ def get_token(ui, url):
         add_kilnapi_token(ui, url, token)
     return token
 
+
 def get_api_url(url):
     '''Given a URL, returns the URL of the Kiln installation.'''
     if '/kiln/' in url.lower():
@@ -564,6 +609,7 @@ def get_api_url(url):
         baseurl = url
     return baseurl
 
+
 class HTTPNoRedirectHandler(urllib2.HTTPRedirectHandler):
     def http_error_302(self, req, fp, code, msg, headers):
         # Doesn't allow multiple redirects so repo alias URLs will not
@@ -572,6 +618,7 @@ class HTTPNoRedirectHandler(urllib2.HTTPRedirectHandler):
 
     http_error_301 = http_error_303 = http_error_307 = http_error_302
 
+
 def get_repo_record(repo, url, token=None):
     '''Returns a Kiln repository record that corresponds to the given repo.'''
     baseurl = get_api_url(url)
@@ -579,7 +626,7 @@ def get_repo_record(repo, url, token=None):
         token = get_token(repo.ui, baseurl)
 
     try:
-        data = urllib.urlencode({ 'token': token }, doseq=True)
+        data = urllib.urlencode({'token': token}, doseq=True)
         opener = urllib2.build_opener(HTTPNoRedirectHandler)
         urllib2.install_opener(opener)
         fd = urllib2.urlopen(url + '?' + data)
@@ -608,6 +655,7 @@ def get_repo_record(repo, url, token=None):
     repo = find_slug(repo, group, 'repos')
     return repo
 
+
 def new_branch(repo, url, name):
     '''Creates a new, decentralized branch off of the specified repo.'''
     baseurl = get_api_url(url)
@@ -628,21 +676,26 @@ def new_branch(repo, url, name):
             return
         raise
 
+
 def normalize_user(s):
     '''Takes a Unicode string and returns an ASCII string.'''
     return unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore')
+
 
 def encode_out(s):
     '''Takes a Unicode string and returns a string encoded for output.'''
     return s.encode(sys.stdout.encoding, 'ignore')
 
+
 def record_base(ui, repo, node, **kwargs):
     '''Stores the first changeset committed in the repo UI so we do not need to expensively recalculate.'''
     repo.ui.setconfig('kiln', 'node', node)
 
+
 def walk(repo, revs):
     '''Returns revisions in repo specified by the string revs'''
     return cmdutil.walkchangerevs(repo, match.always(repo.root, None), {'rev': [revs.encode('ascii', 'ignore')]}, lambda *args: None)
+
 
 def print_list(ui, l, header):
     '''Prints a list l to ui using list notation, with header being the first line'''
@@ -650,10 +703,12 @@ def print_list(ui, l, header):
     for item in l:
         ui.write(_('- %s\n') % item)
 
+
 def wrap_push(orig, ui, repo, dest=None, **opts):
     '''Wraps `hg push' so a review will be created after path guessing and a successful push.'''
     guess_kilnpath(orig, ui, repo, dest, **opts)
     review(ui, repo, dest, opts)
+
 
 def add_unique_reviewer(ui, reviewer, reviewers, name_to_ix, ix_to_name):
     '''Adds a reviewer to reviewers if it is not already added. Otherwise, print an error.'''
@@ -662,6 +717,7 @@ def add_unique_reviewer(ui, reviewer, reviewers, name_to_ix, ix_to_name):
     else:
         reviewers.append(name_to_ix[reviewer])
         print_list(ui, [ix_to_name[r] for r in reviewers], 'reviewers:')
+
 
 def review(ui, repo, dest, opts):
     '''Associates the pushed changesets with a new or existing Kiln review.'''
@@ -764,13 +820,14 @@ def review(ui, repo, dest, opts):
             'ixReviewers': reviewers,
             'sTitle': '(Multiple changesets)' if len(revs) > 1 else repo[revs[0]].description(),
             'sDescription': 'Review created from push.'
-            }
+        }
         r = Review(call_api(repo.ui, baseurl, 'Api/2.0/Review/Create', params, post=True))
         ui.write(_('new review created: %s\n' % urljoin(baseurl, 'Review', r.key)))
     else:
         # Associate changeset(s) with an existing review.
         url = reviews[choice].associate(kiln_repo['ixRepo'], revs)
         ui.write(_('updated review: %s\n' % url))
+
 
 def dummy_command(ui, repo, dest=None, **opts):
     '''dummy command to pass to guess_path() for hg kiln
@@ -780,6 +837,7 @@ def dummy_command(ui, repo, dest=None, **opts):
     '''
     return opts['path'] != dest and dest or None
 
+
 def _standin_expand(paths):
     '''given a sequence of filenames, returns a set of filenames --
     relative to the current working directory! -- prefixed with all
@@ -788,6 +846,7 @@ def _standin_expand(paths):
     paths = [os.path.relpath(os.path.abspath(p), os.getcwd()) for p in paths]
     choices = [[p, os.path.join('.kbf', p), os.path.join('.hglf', p)] for p in paths]
     return set(itertools.chain(*choices))
+
 
 def _filename_match(repo, ctx, paths):
     '''returns a set of filenames contained in both paths and the
@@ -805,6 +864,7 @@ def _filename_match(repo, ctx, paths):
                      for p in ctx.manifest().iterkeys()]
         haystacks = set(map(os.path.normpath, haystacks))
         return needles.intersection(haystacks)
+
 
 def kiln(ui, repo, **opts):
     '''show the relevant page of the repository in Kiln
@@ -888,6 +948,7 @@ def kiln(ui, repo, **opts):
     if default or opts['changes']:
         browse(url)
 
+
 def uisetup(ui):
     extensions.wrapcommand(commands.table, 'outgoing', guess_kilnpath)
     extensions.wrapcommand(commands.table, 'pull', guess_kilnpath)
@@ -896,16 +957,18 @@ def uisetup(ui):
     # Add --review as a valid flag to push's command table
     push_cmd[1].extend([('', 'review', None, 'associate changesets with Kiln review')])
 
+
 def reposetup(ui, repo):
     try:
         from mercurial.httprepo import httprepository
         httprepo = httprepository
-    except ImportError:
+    except (ImportError, AttributeError):
         from mercurial.httppeer import httppeer
         httprepo = httppeer
     if issubclass(repo.__class__, httprepo):
         _upgradecheck(ui, repo)
     repo.ui.setconfig('hooks', 'outgoing.kilnreview', 'python:kiln.record_base')
+
 
 def extsetup(ui):
     try:
@@ -937,4 +1000,4 @@ cmdtable = {
           ('n', 'new-branch', '', _('asynchronously create a new branch from the current repository')),
           ('', 'logout', None, _('log out of Kiln sessions'))],
          _('hg kiln [-p url] [-r rev|-a file|-f file|-c|-o|-s|-t|-n branchName|--logout]'))
-    }
+}
