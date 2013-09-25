@@ -8,3 +8,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias grep='grep --exclude-dir=".svn" -n --color'
 
 alias archive='rsync -ahP --delete'
+
+alias vault='ssh vault'
+alias devbox='ssh devbox'

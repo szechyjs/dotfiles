@@ -1,0 +1,3 @@
+[submodule "private"]
+	path = private
+	url = http://github.szechnet.com/gist/9ebcdc79a8cbf8c26fed.git
