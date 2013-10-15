@@ -1,18 +1,26 @@
 {
-	"auto_upgrade_last_run": 1343417192,
+	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
 		"Alignment",
+		"ApplySyntax",
 		"Arduino",
+		"BracketHighlighter",
 		"CMake",
 		"Display Functions (Java)",
+		"DocBlockr",
 		"Function Name Display",
 		"Git",
 		"google-search",
 		"INI",
+		"Nettuts+ Fetch",
 		"Package Control",
 		"pastebin-sublime-plugin",
+		"SideBarEnhancements",
+		"Simple Rails Navigator",
+		"SublimeCodeIntel",
 		"SublimeHg",
+		"SublimeLinter",
 		"WordHighlight"
 	]
 }

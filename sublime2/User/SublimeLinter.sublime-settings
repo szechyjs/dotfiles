@@ -1,0 +1,12 @@
+{
+    "sublimelinter_syntax_map":
+    {
+        "Python Django": "python",
+        "Ruby on Rails": "ruby",
+        "C++": "c",
+        "Arduino": "c"
+    },
+
+    // If true, lines with errors or warnings will have a gutter mark.
+    "sublimelinter_gutter_marks": true
+}
