@@ -2,6 +2,9 @@
 	name = Jared Szechy
 	email = jared.szechy@gmail.com
 
+[credential]
+	helper = osxkeychain
+
 [color]
 	diff = auto
 	status = auto
@@ -12,24 +15,27 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 
-[alias]
-    merge-noff = merge --no-ff
-    ci = commit
-    unstage = reset HEAD
-    pdiff = diff --patience
+[push]
+	default = simple
 
-    assume   = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+[alias]
+	merge-noff = merge --no-ff
+	ci = commit
+	unstage = reset HEAD
+	pdiff = diff --patience
+
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [github]
 	user = szechyjs
 
 [merge]
-    tool = meld
+	tool = meld
 
 [mergetool "meld"]
-    cmd = "meld $BASE $LOCAL $REMOTE"
+	cmd = "meld $BASE $LOCAL $REMOTE"
 
 [mergetool "kdiff3"]
-    cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
+	cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
