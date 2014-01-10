@@ -15,8 +15,8 @@ progress =
 record =
 purge =
 kilnauth = ~/.dotfiles/hg/kilnauth.py
-kilnpath = ~/.dotfiles/hg/kilnpath.py
 kiln = ~/.dotfiles/hg/kiln.py
+largefiles =
 
 [kiln_scheme]
 kiln=https://brilligent.kilnhg.com/Repo
@@ -24,3 +24,10 @@ kiln=https://brilligent.kilnhg.com/Repo
 [auth]
 kiln.prefix=brilligent.kilnhg.com
 kiln.username=Jared Szechy
+
+[trusted]
+users = 1025
+
+[largefiles]
+minsize = 1
+patterns = *.a *.la *.gz *.1
