@@ -7,7 +7,7 @@ merge = meld
 llog = log --limit 5
 
 [merge-tools]
-meld.args = $local $other
+meld.args = $local $base $other -o $output
 
 [extensions]
 color =

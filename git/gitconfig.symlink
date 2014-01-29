@@ -12,6 +12,9 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 
+[push]
+	default = simple
+
 [alias]
     merge-noff = merge --no-ff
     ci = commit
