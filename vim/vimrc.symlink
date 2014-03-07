@@ -20,7 +20,7 @@ syntax on                       " syntax hilight on
 syntax sync fromstart
 set listchars=tab:>-,trail:.,precedes:<,extends:>   " show whitespace
 set list
-
+set backspace=indent,eol,start
 
 " ----------------------------------------------------------------------------
 "  UI
