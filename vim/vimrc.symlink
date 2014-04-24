@@ -89,3 +89,6 @@ set ttimeoutlen=50          " short ttimeoutlen to lower latency on mode
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'molokai'
 let g:bufferline_echo = 0
+
+noremap <C-p> :Unite -start-insert file_rec/async<cr>
+noremap <C-n> :NERDTreeToggle<cr>
