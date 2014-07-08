@@ -1,3 +1,9 @@
 vim/vim.symlink/.netrwhist
 *.pyc
-sublime2/User/Package Control.last-run
+atom.symlink/.node-gyp
+atom.symlink/.npm
+atom.symlink/.storage
+atom.symlink/compile-cache
+atom.symlink/packages
+atom.symlink/storage
+atom.symlink/themes
