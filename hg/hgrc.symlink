@@ -16,6 +16,7 @@ record =
 purge =
 kilnauth = ~/.dotfiles/hg/kilnauth.py
 kiln = ~/.dotfiles/hg/kiln.py
+gestalt = ~/.dotfiles/hg/gestalt.py
 largefiles =
 
 [kiln_scheme]
