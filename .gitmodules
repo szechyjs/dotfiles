@@ -43,3 +43,6 @@
 [submodule "vim/vim.symlink/bundle/vim-reek"]
 	path = vim/vim.symlink/bundle/vim-reek
 	url = https://github.com/rainerborene/vim-reek.git
+[submodule "private"]
+	path = private
+	url = git@git.szechnet.com:szechyjs/private-dotfiles.git
