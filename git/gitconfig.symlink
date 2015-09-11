@@ -26,14 +26,21 @@
     unassume = update-index --no-assume-unchanged
     assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
+    serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+
 [github]
 	user = szechyjs
 
 [merge]
-    tool = meld
+    tool = Kaleidoscope
 
 [mergetool "meld"]
     cmd = "meld $BASE $LOCAL $REMOTE"
-
 [mergetool "kdiff3"]
     cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
