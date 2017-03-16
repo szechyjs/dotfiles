@@ -46,3 +46,9 @@
 [submodule "private"]
 	path = private
 	url = git@git.szechnet.com:szechyjs/private-dotfiles.git
+[submodule "vim/vim.symlink/bundle/Dockerfile"]
+	path = vim/vim.symlink/bundle/Dockerfile
+	url = https://github.com/ekalinin/Dockerfile.vim.git
+[submodule "vim/vim.symlink/bundle/typescript-vim"]
+	path = vim/vim.symlink/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
