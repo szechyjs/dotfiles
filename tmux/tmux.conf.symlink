@@ -17,7 +17,7 @@ set-window-option -g window-status-bg default
 # Rather than constrain window size to the maximum size of any client
 # connected to the *session*, constrain window size to the maximum size of any
 # client connected to *that window*. Much more reasonable.
-setw -g aggressive-resize on
+setw -g aggressive-resize off      # doesn't work with iTerm2
 
 # status bar
 set-option -g status-utf8 on
@@ -52,7 +52,7 @@ set-window-option -g automatic-rename
 set -g mode-mouse on
 set -g mouse-select-window on
 
-set-option history-limit 10000
+set -g history-limit 10000
 
 # Use Vi movement keys
 bind h select-pane -L

@@ -1,6 +1,7 @@
 [user]
 	name = Jared Szechy
 	email = jared.szechy@brilligent.com
+	signingkey = 9B8765B0
 
 [color]
 	diff = auto
@@ -12,6 +13,7 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 	ignorecase = false
+	pager = "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
 
 [push]
 	default = simple
@@ -44,3 +46,12 @@
 
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[credential "https://git.brilligent.com"]
+    username = jszechy
+[credential]
+	helper = osxkeychain

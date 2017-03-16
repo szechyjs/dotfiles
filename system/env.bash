@@ -3,3 +3,5 @@ if type -p subl > /dev/null ; then
 else
     export EDITOR=vim
 fi
+
+export VAGRANT_HOME=/Volumes/data/VMs/vagrant.d
