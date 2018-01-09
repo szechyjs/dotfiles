@@ -12,7 +12,7 @@ alias sync='rsync -ahP --delete'
 alias vault='ssh vault'
 alias devbox='ssh devbox'
 
-alias jake='make -j5'
+alias jake='make -j$(gnproc)'
 
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 
