@@ -31,7 +31,7 @@
 	unassume = update-index --no-assume-unchanged
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
-    serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
+    serve = daemon --reuseaddr --verbose --base-path=. --export-all --informative-errors
 
 [github]
 	user = szechyjs
