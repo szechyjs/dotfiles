@@ -1,0 +1,40 @@
+'release-notes':
+  'viewedVersion': '0.95.0'
+'welcome':
+  'showOnStartup': false
+'editor':
+  'fontSize': 11
+  'showIndentGuide': true
+  'showInvisibles': true
+'core':
+  'ignoredNames': [
+    '.bundle'
+    '.git'
+    'log'
+    'tmp'
+    'vendor'
+  ]
+  'themes': [
+    'atom-dark-ui'
+    'monokai'
+  ]
+  'projectHome': '/Users/jared/Dev'
+  'disabledPackages': [
+    'build'
+    'exception-reporting'
+    'metrics'
+  ]
+'markdown-preview':
+  'grammars': [
+    'source.gfm'
+    'source.litcoffee'
+    'text.plain'
+    'text.plain.null-grammar'
+  ]
+'spell-check':
+  'grammars': [
+    'source.gfm'
+    'text.git-commit'
+    'text.plain'
+    'text.plain.null-grammar'
+  ]

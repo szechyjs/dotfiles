@@ -1,4 +1,15 @@
+" Pathogen package manager
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+" ----------------------------------------------------------------------------
+"  General
+" ----------------------------------------------------------------------------
 set noswapfile
+filetype on
+filetype indent on
+filetype plugin on              " Allow filetype-specific plugins
+set omnifunc=syntaxcomplete#Complete
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -25,15 +36,15 @@ set backspace=indent,eol,start
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
-"let g:molokai_original = 1
 colorscheme molokai
+let g:rehash256 = 1
 set t_Co=256
 
-set ruler                       " show cursor position in status bar
 set number                      " show line numbers
-set cursorline
+set cursorline                  " Highlight current line
 set scrolloff=2                 " 2 lines above/below cursor when scrolling
 set title                       " shor file in titlebar
+set backspace=2                 " consistent backspace on all systems
 
 if &columns < 90
    set columns=90
@@ -48,16 +59,18 @@ if has("gui_running")
    set guioptions-=T
 endif
 
+" ----------------------------------------------------------------------------
+" Search
+" ----------------------------------------------------------------------------
+set ignorecase  " case insensitive searching
+set smartcase   " but become case sensitive if you type uppercase characters
+set hlsearch    " highlight all matches
+set incsearch   " incremental searching on
 
 " ----------------------------------------------------------------------------
 " Visual Cues
 " ----------------------------------------------------------------------------
 set showmatch   " Show matching braces
-set showmode    " show mode in status bar (insert/replace/...)
-set incsearch   " incremental searching on
-set hlsearch    " highlight all matches
-set ignorecase  " case insensitive searching
-set smartcase   " but become case sensitive if you type uppercase characters
 set visualbell
 
 set clipboard+=unnamed  " Yanks go on clipboard instead.
@@ -65,3 +78,17 @@ set history=50  " keep track of last commands
 
 set selectmode=key
 set wildmenu    " menu on statusbar for command autocomplete
+
+" ----------------------------------------------------------------------------
+" Plugin specific settings
+" ----------------------------------------------------------------------------
+autocmd vimenter * if !argc() | NERDTree | endif  " open nerdtree if no files
+set laststatus=2            " always show statusbar
+set noshowmode              " hide mode so it shows on the statusbar only
+set ttimeoutlen=50          " short ttimeoutlen to lower latency on mode
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'molokai'
+let g:bufferline_echo = 0
+
+noremap <C-p> :Unite -start-insert file_rec/async<cr>
+noremap <C-n> :NERDTreeToggle<cr>

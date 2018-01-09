@@ -10,4 +10,8 @@ if [ -d "/usr/local/heroku/bin" ] ; then
     export PATH="$PATH:/usr/local/heroku/bin"
 fi
 
+if [ -d "/usr/local/sbin" ] ; then
+    export PATH="$PATH:/usr/local/sbin"
+fi
+
 export PATH=$DOTFILES/bin:$PATH

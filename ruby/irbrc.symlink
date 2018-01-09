@@ -1,0 +1,18 @@
+#!/usr/bin/ruby
+require 'irb/completion'
+require 'irb/ext/save-history'
+require 'rubygems'
+require 'pp'
+
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+IRB.conf[:AUTO_INDENT] = true
+
+def verbose_toggle
+  irb_context.echo ? irb_context.echo = false : irb_context.echo = true
+end
+
+def r
+  reload!
+end

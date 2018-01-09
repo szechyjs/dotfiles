@@ -1,0 +1,61 @@
+# Use UTF8
+set -g utf8
+set-window-option -g utf8 on
+
+# Color
+#set -g default-terminal "screen-256color"
+set-option -g status-bg colour235 #base02
+set-option -g status-fg colour136 #yellow
+set-option -g status-attr default
+
+set-window-option -g window-status-fg colour244 #base0
+set-window-option -g window-status-current-bg default
+
+set-window-option -g window-status-current-fg colour166 #orange
+set-window-option -g window-status-bg default
+
+# Rather than constrain window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize off      # doesn't work with iTerm2
+
+# status bar
+set-option -g status-utf8 on
+
+# Activity monitoring
+set -g monitor-activity on
+set -g visual-activity on
+
+# Status bar
+set -g status-interval 1
+set -g status-justify centre # center align window list
+set -g status-left-length 22
+set -g status-right-length 140
+set -g status-left '#[fg=colour118]#H #[fg=black]• #[fg=colour118,bright]#(uname -r | cut -c 1-6)#[default]'
+set -g status-right '#[fg=colour118,bg=default,bright]#(tmux-mem-cpu-load 1) #[fg=colour161,dim,bg=default]#(uptime | cut -f 4-5 -d " " | cut -f 1 -d ",") #[fg=colour252,bg=default]%a%l:%M:%S %p#[default] #[fg=colour81]%Y-%m-%d'
+
+# Start numbering at 1
+set -g base-index 1
+
+# Allows for faster key repetition
+set -s escape-time 0
+
+bind-key C command-prompt -p "Name of new window: " "new-window -n '%%'"
+
+# Reload config
+bind-key r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+# Auto window rename
+set-window-option -g automatic-rename
+
+# Enable mouse
+set -g mode-mouse on
+set -g mouse-select-window on
+
+set -g history-limit 10000
+
+# Use Vi movement keys
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
