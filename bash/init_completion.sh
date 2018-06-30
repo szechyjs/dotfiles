@@ -3,8 +3,10 @@ if [ -f /etc/bash_completion ] ; then
 fi
 
 # requires: brew install bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion ]
+if [ -x "$(command -v brew)" ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion ]
+    fi
 fi
 
 for config_file in $DOTFILES/**/completion.sh
