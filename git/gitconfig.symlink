@@ -1,7 +1,7 @@
 [user]
 	name = Jared Szechy
 	email = jared.szechy@gmail.com
-	signingkey = 4CE34642
+	signingkey = 15290E1A
 
 [credential]
 	helper = osxkeychain
