@@ -1,6 +1,24 @@
-" Pathogen package manager
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+" ----------------------------------------------------------------------------
+"  Vundle Package Manager
+" ----------------------------------------------------------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tomasr/molokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'bling/vim-bufferline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'leafgarland/typescript-vim'
+
+call vundle#end()
+filetype plugin indent on
 
 " ----------------------------------------------------------------------------
 "  General

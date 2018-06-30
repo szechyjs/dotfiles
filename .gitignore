@@ -1,6 +1,11 @@
 vim/vim.symlink/.netrwhist
+# These are managed by Vundle
+vim/vim.symlink/bundle/
+
 *.pyc
 *.cache
+
+# Atom stuff
 atom.symlink/.node-gyp
 atom.symlink/.npm
 atom.symlink/.storage
