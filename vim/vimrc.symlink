@@ -12,10 +12,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -106,6 +107,7 @@ set noshowmode              " hide mode so it shows on the statusbar only
 set ttimeoutlen=50          " short ttimeoutlen to lower latency on mode
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'molokai'
+let g:airline#extensions#ale#enabled = 1
 let g:bufferline_echo = 0
 
 noremap <C-p> :Unite -start-insert file_rec/async<cr>
