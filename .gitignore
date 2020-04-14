@@ -5,11 +5,3 @@ vim/vim.symlink/bundle/
 *.pyc
 *.cache
 
-# Atom stuff
-atom.symlink/.node-gyp
-atom.symlink/.npm
-atom.symlink/.storage
-atom.symlink/compile-cache
-atom.symlink/packages
-atom.symlink/storage
-atom.symlink/themes
