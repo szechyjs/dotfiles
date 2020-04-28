@@ -7,3 +7,5 @@ else
 fi
 
 export VAGRANT_HOME=/Volumes/data/VMs/vagrant.d
+
+export GOPATH=$HOME/code/go

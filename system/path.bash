@@ -14,4 +14,5 @@ if [ -d "/usr/local/sbin" ] ; then
     export PATH="$PATH:/usr/local/sbin"
 fi
 
+export PATH=$HOME/code/go/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
