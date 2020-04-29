@@ -17,6 +17,7 @@
 	editor = vim
 	ignorecase = false
     pager = "diff-so-fancy | less --tabs=4 -RFX"
+	precomposeUnicode = true
 
 [push]
 	default = simple
@@ -59,4 +60,7 @@
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
-	required = true
+    required = true
+
+[url "git+ssh://szechyjs@git.launchpad.net/"]
+    insteadof = lp:

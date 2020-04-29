@@ -14,9 +14,4 @@ if [ -d "/usr/local/heroku/bin" ] ; then
     export PATH="$PATH:/usr/local/heroku/bin"
 fi
 
-
-if [ -d "$GOPATH/bin:" ] ; then
-    export PATH="$PATH:$GOPATH/bin"
-fi
-
 export PATH=$DOTFILES/bin:$PATH

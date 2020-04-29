@@ -9,6 +9,10 @@ if [ -x "$(command -v brew)" ]; then
     fi
 fi
 
+if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc" ]; then
+  . /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+fi
+
 for config_file in $DOTFILES/**/completion.sh
 do
   [ -f "$config_file" ] || continue
