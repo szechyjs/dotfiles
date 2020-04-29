@@ -19,5 +19,4 @@ if [ -d "$GOPATH/bin:" ] ; then
     export PATH="$PATH:$GOPATH/bin"
 fi
 
-export PATH=$HOME/code/go/bin:$PATH
 export PATH=$DOTFILES/bin:$PATH
