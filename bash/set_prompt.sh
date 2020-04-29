@@ -1,9 +1,5 @@
 if [ "$color_prompt" = yes ]; then
-    if [ -n "$TOOLS_NAME" ]; then
-        PS1="${debian_chroot:+($debian_chroot)}$MonoBBlue($TOOLS_NAME)$MonoWhite:$GITPS$MonoBGreen$PathShort$MonoWhite\$ $MonoString"
-    else
-        PS1="${debian_chroot:+($debian_chroot)}$MonoBPink$User$MonoWhite@$MonoBBlue$Host$MonoWhite:$GITPS$MonoBGreen$PathShort$MonoWhite\$ $MonoString"
-    fi
+    PS1="${debian_chroot:+($debian_chroot)}$MonoBPink$User$MonoWhite@$MonoBBlue$Host$MonoWhite:$GITPS$MonoBGreen$PathShort$MonoWhite\$ $MonoString"
 else
     PS1="${debian_chroot:+($debian_chroot)}$User@$Host:$GITPS$PathShort\$ "
 fi

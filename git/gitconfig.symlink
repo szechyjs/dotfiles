@@ -23,9 +23,12 @@
 
 [alias]
 	merge-noff = merge --no-ff
-	ci = commit
+    ci = commit
+    co = checkout
 	unstage = reset HEAD
-	pdiff = diff --patience
+    pdiff = diff --patience
+    po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    local = "! git fetch && git log --oneline --no-merges origin/$(git rev-parse --abbrev-ref HEAD).."
 
 	assume   = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
@@ -46,6 +49,10 @@
 [mergetool "Kaleidoscope"]
     cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
     trustExitCode = true
+
+[diff "enc"]
+    textconv = rails encrypted:show
+    cachetextconv = false
 
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
