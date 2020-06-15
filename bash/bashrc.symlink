@@ -11,7 +11,6 @@ then
   source ~/.localrc
 fi
 
-source $DOTFILES/bash/nvm.sh
-source $DOTFILES/bash/rvm.sh
+source $DOTFILES/bash/asdf.sh
 source $DOTFILES/bash/init_completion.sh
 source $DOTFILES/bash/set_prompt.sh
