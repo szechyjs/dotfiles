@@ -62,8 +62,6 @@ set backspace=indent,eol,start
 "  UI
 " ----------------------------------------------------------------------------
 colorscheme molokai
-let g:rehash256 = 1
-set t_Co=256
 
 set number                      " show line numbers
 set cursorline                  " Highlight current line
@@ -84,6 +82,10 @@ if has("gui_running")
    " No menus and no toolbar
    set guioptions-=m
    set guioptions-=T
+endif
+
+if has("termguicolors")
+   set termguicolors
 endif
 
 " ----------------------------------------------------------------------------
