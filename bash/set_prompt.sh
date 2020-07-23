@@ -1,5 +1,5 @@
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}$MonoBPink$User$MonoWhite@$MonoBBlue$Host$MonoWhite:$GITPS$MonoBGreen$PathShort$MonoWhite\$ $MonoString"
+    PS1="${debian_chroot:+($debian_chroot)}$MonoBPink$User$MonoWhite@$MonoBBlue$Host$MonoWhite:$GITPS$MonoBGreen$PathShort$MonoWhite\$ "
 else
     PS1="${debian_chroot:+($debian_chroot)}$User@$Host:$GITPS$PathShort\$ "
 fi
