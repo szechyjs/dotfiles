@@ -13,4 +13,14 @@ fi
 
 source $DOTFILES/bash/asdf.sh
 source $DOTFILES/bash/init_completion.sh
-source $DOTFILES/bash/set_prompt.sh
+
+if [ -x "$(command -v starship)" ]; then
+    function set_win_title() {
+        echo -ne "\033]0; $(basename $PWD) \007"
+    }
+    starship_precmd_user_func="set_win_title"
+    eval "$(starship init bash)"
+else
+    source $DOTFILES/bash/set_prompt.sh
+fi
+
