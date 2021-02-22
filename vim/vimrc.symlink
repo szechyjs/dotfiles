@@ -111,6 +111,12 @@ set wildmenu    " menu on statusbar for command autocomplete
 " ----------------------------------------------------------------------------
 " Key mappings
 " ----------------------------------------------------------------------------
+" dont use arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+
 " faster scrolling
 noremap <S-j> 4jzz
 noremap <S-k> 4kzz
