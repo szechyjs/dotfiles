@@ -1,0 +1,5 @@
+#!/bin/bash
+profile=${AWS_PROFILE:-dev}
+export AWS_PROFILE=$profile
+
+aws sts decode-authorization-message --encoded-message "$1" --query DecodedMessage --output text | jq '.'
