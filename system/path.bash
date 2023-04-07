@@ -14,4 +14,8 @@ if [ -d "/usr/local/heroku/bin" ] ; then
     export PATH="$PATH:/usr/local/heroku/bin"
 fi
 
+if [ -f "$HOME/.cargo/env" ] ; then
+    source $HOME/.cargo/env
+fi
+
 export PATH=$DOTFILES/bin:$PATH
