@@ -6,3 +6,4 @@ serverless
 yarn
 @angular/cli
 terminalizer
+@web/dev-server

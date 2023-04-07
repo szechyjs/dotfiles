@@ -2,3 +2,4 @@ bundler
 pry
 rubocop
 solargraph
+ruby-lsp
