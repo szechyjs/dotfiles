@@ -36,7 +36,8 @@
 	unassume = update-index --no-assume-unchanged
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
-    serve = daemon --reuseaddr --verbose --base-path=. --export-all --informative-errors
+  serve = daemon --reuseaddr --verbose --base-path=. --export-all --informative-errors
+  br = branch --sort=-committerdate
 
 [github]
   user = szechyjs
@@ -52,6 +53,10 @@
 
 [merge]
     tool = Kaleidoscope
+
+[merge "npm-merge-driver"]
+    name = automatically merge npm lockfiles
+    driver = npx npm-merge-driver merge %A %O %B %P
 
 [mergetool "meld"]
     cmd = "meld $BASE $LOCAL $REMOTE"
@@ -69,9 +74,10 @@
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
     required = true
+	process = git-lfs filter-process
 
 [url "git+ssh://szechyjs@git.launchpad.net/"]
     insteadof = lp:
