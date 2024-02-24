@@ -19,3 +19,11 @@ alias today='gcal -cn -q us_oh  .'
 
 alias listening='lsof -iTCP -sTCP:LISTEN'
 alias routes='netstat -nr'
+
+alias be='bundle exec'
+
+if [ -x "$(command -v nvim)" ]; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
+

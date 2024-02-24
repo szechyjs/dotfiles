@@ -1,3 +1,10 @@
+export DOTFILES=$HOME/.dotfiles
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 autoload -Uz compinit && compinit
 
 if [ -x "$(command -v starship)" ]; then
@@ -11,3 +18,11 @@ fi
 if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
     . $(brew --prefix asdf)/libexec/asdf.sh
 fi
+
+for config_file in $DOTFILES/system/*.bash
+do
+  [ -f "$config_file" ] || continue
+  . $config_file
+done
+
+
