@@ -16,7 +16,8 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 	ignorecase = false
-    pager = "diff-so-fancy | less --tabs=4 -RFX"
+#  pager = "diff-so-fancy | less --tabs=4 -RFX"
+  pager = delta --diff-so-fancy
 	precomposeUnicode = true
 
 [push]
@@ -38,7 +39,16 @@
     serve = daemon --reuseaddr --verbose --base-path=. --export-all --informative-errors
 
 [github]
-	user = szechyjs
+  user = szechyjs
+
+[interactive]
+  diffFilter = delta --color-only --diff-so-fancy
+
+[diff]
+  colorMoved = default
+
+[delta]
+  navigate = true
 
 [merge]
     tool = Kaleidoscope
@@ -56,7 +66,8 @@
     cachetextconv = false
 
 [difftool "Kaleidoscope"]
-    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -64,3 +75,5 @@
 
 [url "git+ssh://szechyjs@git.launchpad.net/"]
     insteadof = lp:
+[help]
+	autocorrect = 10

@@ -12,4 +12,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias tmux='tmux -2'
+alias be='bundle exec'

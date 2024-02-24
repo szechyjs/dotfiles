@@ -24,3 +24,4 @@ else
     source $DOTFILES/bash/set_prompt.sh
 fi
 
+eval "$(zoxide init --cmd cd bash)"
