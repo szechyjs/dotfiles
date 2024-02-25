@@ -40,6 +40,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
 bindkey "\e" vi-cmd-mode
-bindkey "\e[A" history-beginning-search-backward
-bindkey "\e[B" history-beginning-search-forward
+bindkey "\e[A" history-beginning-search-backward # up key
+bindkey "\e[B" history-beginning-search-forward # down key
+bindkey "^[[H" beginning-of-line # home key
+bindkey "^[[F" end-of-line # end key
 
