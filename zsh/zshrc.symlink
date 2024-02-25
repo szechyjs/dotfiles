@@ -23,6 +23,12 @@ if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
     . $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
+for config_file in $DOTFILES/zsh/*.zsh
+do
+  [ -f "$config_file" ] || continue
+  . $config_file
+done
+
 for config_file in $DOTFILES/system/*.bash
 do
   [ -f "$config_file" ] || continue
