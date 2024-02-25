@@ -8,6 +8,10 @@ fi
 autoload -Uz compinit && compinit
 
 if [ -x "$(command -v starship)" ]; then
+  function set_win_title() {
+    echo -ne "\033]0; $(basename "$PWD") \007"
+  }
+  starship_precmd_user_func="set_win_title"
   eval "$(starship init zsh)"
 fi
 
@@ -25,4 +29,11 @@ do
   . $config_file
 done
 
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+
+bindkey "\e" vi-cmd-mode
+bindkey "\e[A" history-beginning-search-backward
+bindkey "\e[B" history-beginning-search-forward
 
