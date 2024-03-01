@@ -39,9 +39,14 @@ setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
+for direction (up down) {
+  autoload -Uz $direction-line-or-beginning-search
+  zle -N $direction-line-or-beginning-search
+}
+
 bindkey "\e" vi-cmd-mode
-bindkey "\e[A" history-beginning-search-backward # up key
-bindkey "\e[B" history-beginning-search-forward # down key
+bindkey "\e[A" up-line-or-beginning-search # up key
+bindkey "\e[B" down-line-or-beginning-search # down key
 bindkey "^[[H" beginning-of-line # home key
 bindkey "^[[F" end-of-line # end key
 
