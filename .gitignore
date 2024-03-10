@@ -5,3 +5,4 @@ vim/vim.symlink/bundle/
 *.pyc
 *.cache
 
+Brewfile.lock.json
