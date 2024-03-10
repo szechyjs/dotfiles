@@ -6,6 +6,7 @@ then
 fi
 
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 if [ -x "$(command -v starship)" ]; then
   function set_win_title() {
