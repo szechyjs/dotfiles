@@ -10,7 +10,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
     opts = {
-      auto_install = true,
+      automatic_installation = true,
     },
   },
   {
@@ -24,6 +24,12 @@ return {
         capabilities = capabilities
       })
       lspconfig.tsserver.setup({
+        capabilities = capabilities
+      })
+      lspconfig.gopls.setup({
+        capabilities = capabilities
+      })
+      lspconfig.ruby_lsp.setup({
         capabilities = capabilities
       })
 
