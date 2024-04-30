@@ -1,5 +1,5 @@
 export EDITOR=nvim
-export ANDROID_SDK_ROOT=/usr/local/android-sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
 
 export STARSHIP_CONFIG=~/.starship
 
