@@ -29,6 +29,9 @@ return {
       lspconfig.gopls.setup({
         capabilities = capabilities
       })
+      lspconfig.rubocop.setup({
+        capabilities = capabilities
+      })
       lspconfig.ruby_lsp.setup({
         capabilities = capabilities
       })

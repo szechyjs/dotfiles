@@ -14,7 +14,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = nvim
 	ignorecase = false
 #  pager = "diff-so-fancy | less --tabs=4 -RFX"
   pager = delta --diff-so-fancy
