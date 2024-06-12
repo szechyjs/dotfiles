@@ -13,3 +13,4 @@ brew "starship"
 brew "the_silver_searcher"
 brew "zoxide"
 
+cask "skitch"

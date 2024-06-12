@@ -18,19 +18,22 @@
 	ignorecase = false
 #  pager = "diff-so-fancy | less --tabs=4 -RFX"
   pager = delta --diff-so-fancy
-	precomposeUnicode = true
+  precomposeUnicode = true
+
+[commit]
+  gpgsign = true
 
 [push]
 	default = simple
 
 [alias]
 	merge-noff = merge --no-ff
-    ci = commit
-    co = checkout
-  	unstage = restore --staged
-    pdiff = diff --patience
-    po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
-    local = "! git fetch && git log --oneline --no-merges origin/$(git rev-parse --abbrev-ref HEAD).."
+  ci = commit
+  co = checkout
+  unstage = restore --staged
+  pdiff = diff --patience
+  po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+  local = "! git fetch && git log --oneline --no-merges origin/$(git rev-parse --abbrev-ref HEAD).."
 
 	assume   = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
