@@ -11,6 +11,8 @@ return {
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find files' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Search files' }) -- requires ripgrep
+      vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = 'Buffers' })
+      vim.keymap.set('n', '<leader>cf', builtin.treesitter, { desc = 'Search code' })
     end
   },
   {
