@@ -8,6 +8,7 @@ return {
       ['<leader>b'] = { name = '+buffer' },
       ['<leader>c'] = { name = '+code' },
       ['<leader>f'] = { name = '+find' },
+      -- ['<leader>n'] = { name = '+test' },
     },
   },
   config = function(_, opts)
