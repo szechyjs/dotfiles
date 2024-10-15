@@ -8,6 +8,7 @@ return {
       ['<leader>b'] = { name = '+buffer' },
       ['<leader>c'] = { name = '+code' },
       ['<leader>f'] = { name = '+find' },
+      ['<leader>g'] = { name = '+goto' },
       -- ['<leader>n'] = { name = '+test' },
     },
   },

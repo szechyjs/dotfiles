@@ -9,9 +9,10 @@ return {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.rubocop,
+        null_ls.builtins.formatting.goimports,
       }
     })
 
-    vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = 'Format file'})
+    vim.keymap.set('n', '<leader>bf', vim.lsp.buf.format, { desc = 'Format file'})
   end
 }
