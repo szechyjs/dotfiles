@@ -1,6 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.ai.copilot",
+    "lazyvim.plugins.extras.ai.copilot-chat",
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.lang.angular",
     "lazyvim.plugins.extras.lang.json",
