@@ -10,6 +10,7 @@ return {
       { "<leader>f", group = "find" },
       { "<leader>g", group = "goto" },
       { "<leader>n", group = "test" },
+      { "<leader>x", group = "trouble" },
       { "[", group = "prev" },
       { "]", group = "next" },
     }

@@ -5,3 +5,4 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set splitright")
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
+vim.opt.termguicolors = true

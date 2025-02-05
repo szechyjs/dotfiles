@@ -13,7 +13,10 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Search files' }) -- requires ripgrep
       vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = 'Buffers' })
       vim.keymap.set('n', '<leader>cf', builtin.treesitter, { desc = 'Search code' })
-    end
+    end,
+    opts = {
+      open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'edgy' },
+    },
   },
   -- sets nvim core to use telescope for things like code actions
   {
