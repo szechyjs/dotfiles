@@ -1,4 +1,5 @@
 return {
+  -- adds git signs to the left of the line numbers
   {
     'lewis6991/gitsigns.nvim',
     opts = {

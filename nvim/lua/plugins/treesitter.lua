@@ -1,3 +1,4 @@
+-- Uses treesitter to provide syntax highlighting and indentation
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",

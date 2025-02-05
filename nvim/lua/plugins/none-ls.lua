@@ -1,3 +1,5 @@
+-- community fork of null-ls.nvm
+-- uses null-ls to provide linting and formatting for various languages
 return {
   'nvimtools/none-ls.nvim',
   config = function()

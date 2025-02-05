@@ -1,7 +1,9 @@
 return {
+  -- use LSPs for completions
   {
     'hrsh7th/cmp-nvim-lsp',
   },
+  -- snippets
   {
     'L3MON4D3/LuaSnip',
     dependencies = {
@@ -9,6 +11,7 @@ return {
       'rafamadriz/friendly-snippets',
     }
   },
+  -- Github Copilot (lua fork)
   {
     'zbirenbaum/copilot.lua',
     cmd = "Copilot",
@@ -20,12 +23,14 @@ return {
       })
     end,
   },
+  -- Copilot completions
   {
     'zbirenbaum/copilot-cmp',
     config = function()
       require('copilot_cmp').setup()
     end,
   },
+  -- Completion engine
   {
     'hrsh7th/nvim-cmp',
     dependencies = {

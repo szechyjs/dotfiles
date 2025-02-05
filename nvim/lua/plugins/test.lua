@@ -1,3 +1,4 @@
+-- plugin for running tests in Neovim
 return {
   "nvim-neotest/neotest",
   lazy = true,

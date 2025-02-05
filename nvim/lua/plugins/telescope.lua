@@ -1,4 +1,5 @@
 return {
+  -- Fuzzy finder for files, buffers, git, grep, etc.
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -14,6 +15,7 @@ return {
       vim.keymap.set('n', '<leader>cf', builtin.treesitter, { desc = 'Search code' })
     end
   },
+  -- sets nvim core to use telescope for things like code actions
   {
     'nvim-telescope/telescope-ui-select.nvim',
     config = function()

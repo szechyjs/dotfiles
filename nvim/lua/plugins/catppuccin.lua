@@ -1,3 +1,4 @@
+-- UI theme
 return {
   'catppuccin/nvim',
   lazy = false,

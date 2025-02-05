@@ -1,3 +1,4 @@
+-- provides a nice popup with keybindings
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",

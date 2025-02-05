@@ -1,4 +1,5 @@
 return {
+  -- Package manager for LSP servers, formatters, linters, etc
   {
     'williamboman/mason.nvim',
     lazy = false,
@@ -6,6 +7,7 @@ return {
       require("mason").setup()
     end
   },
+  -- Mason extension that connects mason and lspconfig
   {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
@@ -13,6 +15,7 @@ return {
       automatic_installation = true,
     },
   },
+  -- Quickstart configs for nvim LSP
   {
     'neovim/nvim-lspconfig',
     lazy = false,
