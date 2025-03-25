@@ -1,6 +1,3 @@
 bundler
-cocoapods
-pry
 rubocop
-solargraph
 ruby-lsp
