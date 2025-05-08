@@ -11,6 +11,10 @@ return {
         mason = false,
         cmd = { vim.fn.expand("~/.local/share/mise/shims/rubocop"), "--lsp" },
       },
+      steep = {
+        mason = false,
+        cmd = { vim.fn.expand("~/.local/share/mise/shims/steep"), "langserver" },
+      },
     },
   },
 }
