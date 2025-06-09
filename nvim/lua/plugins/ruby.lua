@@ -1,4 +1,6 @@
 -- tries to resolve asdf issues
+local util = require("lspconfig.util")
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
@@ -14,6 +16,7 @@ return {
       steep = {
         mason = false,
         cmd = { vim.fn.expand("~/.local/share/mise/shims/steep"), "langserver" },
+        root_dir = util.root_pattern("Steepfile"),
       },
     },
   },
