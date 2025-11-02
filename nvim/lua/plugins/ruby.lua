@@ -1,4 +1,4 @@
--- tries to resolve asdf issues
+-- tries to resolve version manager issues
 local util = require("lspconfig.util")
 
 return {

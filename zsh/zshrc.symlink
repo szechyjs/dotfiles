@@ -20,12 +20,6 @@ if [ -x "$(command -v zoxide)" ]; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 
-if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
-    . $(brew --prefix asdf)/libexec/asdf.sh
-    . ~/.asdf/plugins/java/set-java-home.zsh
-    export ASDF_GOLANG_MOD_VERSION_ENABLED=true
-fi
-
 if [ -x "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
 fi
