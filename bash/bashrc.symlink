@@ -11,7 +11,6 @@ then
   source ~/.localrc
 fi
 
-source $DOTFILES/bash/asdf.sh
 source $DOTFILES/bash/init_completion.sh
 
 if [ -x "$(command -v starship)" ]; then
