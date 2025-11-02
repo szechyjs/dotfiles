@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+duti -s com.microsoft.VSCode .css editor
+duti -s com.microsoft.VSCode .js editor
+duti -s com.microsoft.VSCode .json editor
+duti -s com.microsoft.VSCode .md editor
+duti -s com.microsoft.VSCode .rb editor
+duti -s com.microsoft.VSCode .scss editor
+duti -s com.microsoft.VSCode .sh editor
+duti -s com.microsoft.VSCode .ts editor
+duti -s com.microsoft.VSCode .xml editor
+duti -s com.microsoft.VSCode .yaml editor
+duti -s com.microsoft.VSCode .yml editor
+duti -s com.mitchellh.ghostty .sh shell
+duti -s com.mitchellh.ghostty .command shell
+{{ end -}}
