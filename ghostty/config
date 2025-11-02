@@ -1,0 +1,42 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /Users/jared/Library/Application Support/com.mitchellh.ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# Ghostty can reload the configuration while running by using the menu
+# options or the bound key (default: Command + Shift + comma on macOS and
+# Control + Shift + comma on other platforms). Not all config options can be
+# reloaded while running; some only apply to new windows and others may require
+# a full restart to take effect.
+
+theme = Catppuccin Mocha
+background-opacity = 0.85
+macos-icon = glass
+
+window-height = 40
+window-width = 130
+
+font-family = FiraCode Nerd Font Mono
+font-style = Ret
+font-style-bold = Bold
+font-size = 12
+
+copy-on-select = clipboard
+
+keybind = super+arrow_left=previous_tab
+keybind = super+arrow_right=next_tab
+
+auto-update = check
+shell-integration = zsh
