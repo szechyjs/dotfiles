@@ -37,6 +37,7 @@ copy-on-select = clipboard
 
 keybind = super+arrow_left=previous_tab
 keybind = super+arrow_right=next_tab
+keybind = super+c=copy_to_clipboard
 
 auto-update = check
 shell-integration = zsh
