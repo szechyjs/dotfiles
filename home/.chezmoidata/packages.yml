@@ -20,4 +20,5 @@ packages:
       - zoxide
     casks:
       - font-fira-code-nerd-font
+      - ghostty
       - skitch
