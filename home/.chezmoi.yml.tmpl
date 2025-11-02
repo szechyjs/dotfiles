@@ -1,6 +1,16 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $gpgkey := promptStringOnce . "gpgkey" "GPG key ID" "E4188B1F15290E1A" -}}
 sourceDir: {{ .chezmoi.homeDir }}/.dotfiles
+diff:
+  pager: delta
+  exclude: [scripts]
+merge:
+  command: nvim
+  args:
+    - "-d"
+    - {{ printf "%q" "{{ .Destination }}" }}
+    - {{ printf "%q" "{{ .Source }}" }}
+    - {{ printf "%q" "{{ .Target }}" }}
 data:
   email: {{ $email | quote }}
   gpgkey: {{ $gpgkey | quote }}
