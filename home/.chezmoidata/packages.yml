@@ -1,0 +1,23 @@
+packages:
+  darwin:
+    brews:
+      - bash
+      - bash-completion
+      - bat
+      - btop
+      - duti
+      - fd
+      - fzf
+      - git
+      - git-delta
+      - glow
+      - k9s
+      - mise
+      - neovim
+      - ripgrep
+      - starship
+      - the_silver_searcher
+      - zoxide
+    casks:
+      - font-fira-code-nerd-font
+      - skitch

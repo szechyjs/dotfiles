@@ -1,4 +1,6 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
-
+{{- $gpgkey := promptStringOnce . "gpgkey" "GPG key ID" "E4188B1F15290E1A" -}}
+sourceDir: {{ .chezmoi.homeDir }}/.dotfiles
 data:
   email: {{ $email | quote }}
+  gpgkey: {{ $gpgkey | quote }}
