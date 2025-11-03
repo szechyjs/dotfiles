@@ -22,7 +22,7 @@
 # a full restart to take effect.
 
 theme = Catppuccin Mocha
-background-opacity = 0.85
+background-opacity = 0.90
 macos-icon = glass
 
 window-height = 40
