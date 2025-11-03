@@ -6,6 +6,7 @@ packages:
       - bat
       - btop
       - duti
+      - eza
       - fd
       - fzf
       - git
@@ -14,6 +15,7 @@ packages:
       - k9s
       - mise
       - neovim
+      - oha
       - ripgrep
       - starship
       - the_silver_searcher

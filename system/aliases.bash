@@ -1,7 +1,14 @@
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias lt='ls -ltr'
+if [ -x "$(command -v eza)" ]; then
+  alias ls='eza --group-directories-first --icons=auto'
+  alias ll='ls -alh'
+  alias la='ls -A'
+  alias lt='ls -lh --sort=modified'
+else
+  alias ll='ls -alF'
+  alias la='ls -A'
+  alias l='ls -CF'
+  alias lt='ls -ltr'
+fi
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -27,3 +34,6 @@ if [ -x "$(command -v nvim)" ]; then
   alias vim='nvim'
 fi
 
+if [ -x "$(command -v fzf)" ]; then
+  alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+fi
