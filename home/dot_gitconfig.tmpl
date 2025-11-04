@@ -16,7 +16,6 @@
 	excludesfile = ~/.gitignore
 	editor = nvim
 	ignorecase = false
-#  pager = "diff-so-fancy | less --tabs=4 -RFX"
   pager = delta --diff-so-fancy
   precomposeUnicode = true
 
@@ -56,37 +55,21 @@
 [delta]
   navigate = true
 
-[merge]
-    tool = Kaleidoscope
-
-[merge "npm-merge-driver"]
-    name = automatically merge npm lockfiles
-    driver = npx npm-merge-driver merge %A %O %B %P
-
-[mergetool "meld"]
-    cmd = "meld $BASE $LOCAL $REMOTE"
-[mergetool "kdiff3"]
-    cmd = "kdiff3 $BASE $LOCAL $REMOTE $MERGED"
-[mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-    trustExitCode = true
-
 [diff "enc"]
-    textconv = rails encrypted:show
-    cachetextconv = false
-
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  textconv = rails encrypted:show
+  cachetextconv = false
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
   required = true
-	process = git-lfs filter-process
+  process = git-lfs filter-process
 
 [url "git+ssh://szechyjs@git.launchpad.net/"]
-    insteadof = lp:
+  insteadof = lp:
+
 [help]
-	autocorrect = 10
+  autocorrect = 10
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
