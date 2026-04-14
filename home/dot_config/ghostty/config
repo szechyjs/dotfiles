@@ -34,6 +34,7 @@ font-style-bold = Bold
 font-size = 12
 
 copy-on-select = clipboard
+mouse-hide-while-typing = true
 
 keybind = super+arrow_left=previous_tab
 keybind = super+arrow_right=next_tab
