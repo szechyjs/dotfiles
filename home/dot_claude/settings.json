@@ -1,0 +1,11 @@
+{
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true
+  },
+  "autoUpdatesChannel": "stable",
+  "skipAutoPermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "starship statusline claude-code"
+  }
+}
