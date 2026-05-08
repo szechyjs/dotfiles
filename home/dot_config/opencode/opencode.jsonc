@@ -1,0 +1,15 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "lsp": true,
+  "plugin": [
+    "opencode-wakatime"
+  ],
+  // "provider": {
+  //   "amazon-bedrock": {
+  //     "options": {
+  //       "profile": "dev",
+  //       "region": "us-east-1"
+  //     }
+  //   }
+  // }
+}
