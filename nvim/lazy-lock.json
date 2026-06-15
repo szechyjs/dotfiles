@@ -9,6 +9,7 @@
   "chezmoi.nvim": { "branch": "main", "commit": "4167bbec76f693f481a5243f1be521ff0ccf1a6d" },
   "chezmoi.vim": { "branch": "main", "commit": "73b30df35c6b645ebd2e6a440eea8463ef3c3f47" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "78c2ecd659d54972be17aa6ba2deac3c53223b80" },
+  "claudecode.nvim": { "branch": "main", "commit": "764445154f32b7e85ebb9ede1d6db79a139fef62" },
   "cmake-tools.nvim": { "branch": "master", "commit": "98cdc162572a7b77733030425d8d045d68f2a1fd" },
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
   "copilot.lua": { "branch": "master", "commit": "b54c05349d406f7af11b150824efa8e4f90015c6" },
