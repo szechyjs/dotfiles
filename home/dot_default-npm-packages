@@ -1,5 +1,6 @@
 npm-merge-driver
-serverless
+serverless@3.40.0
 yarn
 @angular/cli
 @web/dev-server
+aws-cdk

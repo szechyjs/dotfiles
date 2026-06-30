@@ -1,11 +1,14 @@
 {
-  "enabledPlugins": {
-    "ruby-lsp@claude-plugins-official": true
-  },
-  "autoUpdatesChannel": "stable",
-  "skipAutoPermissionPrompt": true,
   "statusLine": {
     "type": "command",
     "command": "starship statusline claude-code"
-  }
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "autoUpdatesChannel": "stable",
+  "theme": "dark",
+  "preferredNotifChannel": "ghostty",
+  "model": "sonnet"
 }
