@@ -2,8 +2,26 @@
   "$schema": "https://app.kilo.ai/config.json",
   "lsp": true,
   "plugin": [
-    "opencode-wakatime"
+    "opencode-wakatime",
+    "@slkiser/opencode-quota"
   ],
+  "mcp": {
+    "notion": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "dash": {
+      "enabled": false,
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/Kapeli/dash-mcp-server.git",
+        "dash-mcp-server"
+      ]
+    }
+  }
   // "provider": {
   //   "amazon-bedrock": {
   //     "options": {
