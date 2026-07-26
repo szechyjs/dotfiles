@@ -1,6 +1,7 @@
 packages:
   darwin:
     brews:
+      - atuin
       - bash
       - bash-completion
       - bat
