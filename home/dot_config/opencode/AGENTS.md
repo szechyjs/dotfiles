@@ -14,10 +14,11 @@
 - Commit messages follow conventional commits format
 - Don't use system `/tmp` directory for testing, use a temporary directory within the project instead
 - Only work on one task at a time, don't switch between tasks unless asked to
+- Don't search the entire file system for files, only search within the project directory unless asked to do otherwise
 
 ## Code Style
 
-- Only use comments when the code is not self-documenting
+- Only add new comments when the code is not self-documenting. Leave existing comments in place unless they are incorrect or misleading
 
 ## Tools
 
