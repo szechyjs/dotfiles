@@ -1,81 +1,41 @@
 {
-  "$schema": "https://app.kilo.ai/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "lsp": true,
-  "plugin": [
+  "plugins": [
+    "opencode-lmstudio",
+    "opencode-supermemory",
     "opencode-wakatime",
-    "@slkiser/opencode-quota"
+    "@plannotator/opencode",
+    "@slkiser/opencode-quota",
+    "@tarquinen/opencode-dcp",
+    "@dietrichgebert/ponytail",
   ],
   "mcp": {
-    "notion": {
-      "enabled": true,
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp"
-    },
-    "dash": {
-      "enabled": false,
-      "type": "local",
-      "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/Kapeli/dash-mcp-server.git",
-        "dash-mcp-server"
-      ]
+    "servers": {
+      "notion": {
+        "disabled": false,
+        "type": "remote",
+        "url": "https://mcp.notion.com/mcp"
+      },
+      "dash": {
+        "disabled": true,
+        "type": "local",
+        "command": [
+          "uvx",
+          "--from",
+          "git+https://github.com/Kapeli/dash-mcp-server.git",
+          "dash-mcp-server"
+        ]
+      }
     }
   },
-  "provider": {
+  "providers": {
     "lmstudio": {
-      "npm": "@ai-sdk/openai-compatible",
+      "package": "aisdk:@ai-sdk/openai-compatible",
       "name": "LM Studio (Local)",
-      "options": {
+      "settings": {
         "baseURL": "http://127.0.0.1:1234/v1"
       },
-      "models": {
-        "google/gemma-4-e4b": {
-          "name": "Gemma 4 E4B",
-          "limit": {
-            "context": 131072,
-            "output": 16384
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-          }
-        },
-        "google/gemma-4-12b-qat": {
-          "name": "Gemma 4 12B QAT",
-          "limit": {
-            "context": 73728,
-            "output": 8192
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-          }
-        },
-        "google/gemma-4-26b-a4b-qat": {
-          "name": "Gemma 4 26B A4B QAT",
-          "limit": {
-            "context": 65536,
-            "output": 8192
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-          }
-        }
-      }
     },
-    // "amazon-bedrock": {
-    //   "options": {
-    //     "profile": "dev",
-    //     "region": "us-east-1"
-    //   }
-    // }
   }
 }
